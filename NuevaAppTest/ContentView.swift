@@ -12,47 +12,60 @@ struct ContentView: View {
     let message = "Mi mensaje"
     @State private var showAlert: Bool = false
     
+    @Environment(\.horizontalSizeClass) var sizeClass
+    
     var body: some View {
-        VStack(
-            alignment: .leading,
-            spacing: 40
-        ) {
-            
-            
-            HStack {
-                Text("Hola")
-                Text("Que mas")
-                    .font(.title2)
-                    .bold()
-            }
-            
-            ZStack {
-                Color.red.edgesIgnoringSafeArea(.all)
-            }
-            
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            
-            Text("Hello!")
-                .font(.largeTitle)
-                .foregroundColor(Color.green)
-                .multilineTextAlignment(.trailing)
-                .padding([.leading, .bottom, .trailing], 20.0)
-            
-            Button(
-                action: {
-                    self.showAlert = true
-                }
-            ) {
+        
+        if sizeClass == .compact {
+            VStack {
+                
+                Image(systemName: "person.crop.circle")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .clipShape(Circle())
+                
                 Text(message)
-            }.alert(isPresented: $showAlert) {
-                Alert(title: Text("Titulo"), dismissButton:.default(Text("OK")))
+                    .font(.headline)
+                    .padding()
+                
+                Button("Show Alert") {
+                    showAlert.toggle()
+                }.modifier(botonStyle(textColor: Color.white, backgroundColor: Color.blue))
+                Button("Hide Alert") {
+                    showAlert.toggle()
+                }.modifier(botonStyle(textColor: Color.white, backgroundColor: Color.red))
+            }
+        } else {
+            HStack {
+                Text(message)
+                    .font(.headline)
+                    .padding()
+                
+                Button("Show Alert") {
+                    showAlert.toggle()
+                }
             }
         }
-        .padding()
+        
     }
 }
+
+struct botonStyle : ViewModifier {
+    var textColor: Color
+    var backgroundColor: Color
+    
+    func body(content: Content) -> some View {
+        
+        content
+            .padding()
+            .background(backgroundColor)
+            .foregroundColor(textColor)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+    
+}
+
+
 
 #Preview {
     ContentView()
