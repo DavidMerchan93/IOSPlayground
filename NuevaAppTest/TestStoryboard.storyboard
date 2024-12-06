@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="ViewController" customModule="NuevaAppTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,7 +55,7 @@
                                     <constraint firstAttribute="height" constant="34" id="ght-Q3-jO1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="10%" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zxt-Mk-YDm">
                                 <rect key="frame" x="287" y="257" width="90" height="34"/>
@@ -63,7 +63,7 @@
                                     <constraint firstAttribute="width" constant="90" id="MvI-gA-82u"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Lc-o5-eeT">
                                 <rect key="frame" x="16" y="336" width="361" height="35"/>
@@ -74,6 +74,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Calcular">
                                     <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="calcular:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="s5V-zq-Kq1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opm-nU-QKB">
                                 <rect key="frame" x="16" y="381" width="361" height="35"/>
@@ -84,6 +87,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Limpiar">
                                     <color key="baseBackgroundColor" systemColor="systemOrangeColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="limpiar:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="IWY-X1-xWK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -114,6 +120,12 @@
                             <constraint firstItem="opm-nU-QKB" firstAttribute="top" secondItem="5Lc-o5-eeT" secondAttribute="bottom" constant="10" id="vmH-xj-e4c"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cantidadTxt" destination="bkB-C4-6iJ" id="A8P-dX-qIh"/>
+                        <outlet property="descuento" destination="78K-oR-wKN" id="O0m-o0-ViR"/>
+                        <outlet property="porcentajeTxt" destination="Zxt-Mk-YDm" id="3ZA-ZR-dHM"/>
+                        <outlet property="resultado" destination="6aa-o6-ZOc" id="atq-5d-jHm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
