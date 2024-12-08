@@ -16,7 +16,7 @@ struct ContentView: View {
             Button("Ventana Modal") {
                 showVentanaModal.toggle()
             }.sheet(isPresented: $showVentanaModal) {
-                VentanaModal()
+                NabigationView()
             }
         }
     }
