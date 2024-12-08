@@ -9,63 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let message = "Mi mensaje"
-    @State private var showAlert: Bool = false
-    
-    @Environment(\.horizontalSizeClass) var sizeClass
+    @State private var showVentanaModal: Bool = false
     
     var body: some View {
-        
-        if sizeClass == .compact {
-            VStack {
-                
-                Image(systemName: "person.crop.circle")
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                    .clipShape(Circle())
-                
-                Text(message)
-                    .font(.headline)
-                    .padding()
-                
-                Button("Show Alert") {
-                    showAlert.toggle()
-                }.modifier(botonStyle(textColor: Color.white, backgroundColor: Color.blue))
-                Button("Hide Alert") {
-                    showAlert.toggle()
-                }.modifier(botonStyle(textColor: Color.white, backgroundColor: Color.red))
-            }
-        } else {
-            HStack {
-                Text(message)
-                    .font(.headline)
-                    .padding()
-                
-                Button("Show Alert") {
-                    showAlert.toggle()
-                }
+        VStack {
+            Button("Ventana Modal") {
+                showVentanaModal.toggle()
+            }.sheet(isPresented: $showVentanaModal) {
+                VentanaModal()
             }
         }
-        
     }
 }
-
-struct botonStyle : ViewModifier {
-    var textColor: Color
-    var backgroundColor: Color
-    
-    func body(content: Content) -> some View {
-        
-        content
-            .padding()
-            .background(backgroundColor)
-            .foregroundColor(textColor)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-    }
-    
-}
-
-
 
 #Preview {
     ContentView()
