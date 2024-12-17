@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct SegundaVista: View {
+    
+    var texto: String
+    
     var body: some View {
-        Text("Soy la segunda vista").navigationTitle("Segunda vista")
+        VStack {
+            Text("Soy la segunda vista").navigationTitle("Segunda vista")
+            Text("Texto del parametro: \(texto)")
+        }
+        
     }
 }
 
 #Preview {
-    SegundaVista()
+    SegundaVista(texto: "Texto")
 }

@@ -11,7 +11,7 @@ import SwiftUI
 struct NuevaAppTestApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabViewMain()
         }
     }
 }

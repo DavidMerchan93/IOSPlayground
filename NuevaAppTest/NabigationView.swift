@@ -9,21 +9,27 @@ import SwiftUI
 
 // El navigation view se hereda en las demas vista
 struct NabigationView: View {
+    
+    @State private var texto: String = ""
+    
     var body: some View {
         NavigationView {
             
             VStack {
                 Text("Primera Vista")
                     .navigationTitle("Home")
-                    .toolbar {
-                        NavigationLink(destination: SegundaVista()) {
+                    .navigationBarItems(leading: HStack {
+                        NavigationLink(destination: SegundaVista(texto: texto)) {
                             Image(systemName: "camera")
                         }
                         NavigationLink(destination: TerceraVista()) {
                             Image(systemName: "plus")
                         }
-                    }
-                NavigationLink(destination: SegundaVista()) {
+                    })
+                
+                TextField("Nuevo mensaje", text: $texto)
+                
+                NavigationLink(destination: SegundaVista(texto: texto)) {
                     Text("Ir a la segunda vista")
                 }
             }
