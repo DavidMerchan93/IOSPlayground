@@ -12,14 +12,38 @@ struct SegundaVista: View {
     var texto: String
     
     var body: some View {
-        VStack {
-            Text("Soy la segunda vista").navigationTitle("Segunda vista")
-            Text("Texto del parametro: \(texto)")
+        NavigationView {
+            VStack {
+                Text("Soy la segunda vista").navigationTitle("Segunda vista")
+                Text("Texto del parametro: \(texto)")
+                List(lista) { item in
+                    NavigationLink(
+                        destination: Emoji(emoji: item.emogi)
+                    ) {
+                        HStack {
+                            Emoji(emoji: item.emogi)
+                            Text(item.nombre).font(.subheadline)
+                        }
+                    }
+                }
+            }
         }
-        
     }
 }
 
-#Preview {
-    SegundaVista(texto: "Texto")
+struct Emoji: View {
+    
+    let emoji: String
+    
+    var body: some View {
+        ZStack {
+            Text(emoji)
+                .font(.largeTitle)
+                .frame(width: 60, height: 60)
+                .overlay(
+                    Circle().stroke(Color.pink, lineWidth: 3)
+                )
+            Spacer()
+        }
+    }
 }
