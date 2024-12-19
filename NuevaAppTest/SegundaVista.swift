@@ -16,6 +16,12 @@ struct SegundaVista: View {
             VStack {
                 Text("Soy la segunda vista").navigationTitle("Segunda vista")
                 Text("Texto del parametro: \(texto)")
+                    .onAppear {
+                        print("Aparecio el texto")
+                    }.onDisappear {
+                        print("Se oculto el texto")
+                    }
+                
                 List(lista) { item in
                     NavigationLink(
                         destination: Emoji(emoji: item.emogi)

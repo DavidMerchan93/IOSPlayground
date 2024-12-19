@@ -9,9 +9,23 @@ import SwiftUI
 
 @main
 struct NuevaAppTestApp: App {
+    
+    @Environment(\.scenePhase) var scenePhase: ScenePhase
+    
     var body: some Scene {
         WindowGroup {
             TabViewMain()
+        }.onChange(of: scenePhase) { old, new in
+            switch new {
+            case .active:
+                print("Esta activo")
+            case .inactive:
+                print( "Esta inactivo")
+            case .background:
+                print("Esta en background")
+            @unknown default:
+                fatalError("Algo salio mal")
+            }
         }
     }
 }
