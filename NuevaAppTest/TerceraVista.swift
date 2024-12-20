@@ -15,6 +15,8 @@ struct TerceraVista: View {
     @State private var showHeard = true
     @State private var number = 0
     
+    @State private var title = "Hello World!"
+    
     var body: some View {
         VStack {
             LazyVGrid(columns: colums, spacing: 40) {
@@ -22,22 +24,36 @@ struct TerceraVista: View {
                     Text(item.emogi).font(.title)
                 }
             }.background(.blue)
-            Button(action:  {
-                showHeard.toggle()
-                if showHeard {
-                    number -= 1
-                } else {
-                    number += 1
-                }
-            }) {
-                if showHeard {
-                    Image(systemName: "heart").foregroundColor(.red)
-                } else {
-                    Image(systemName: "heart.fill").foregroundColor(.red)
+            HStack {
+                Button(action:  {
+                    showHeard.toggle()
+                    if showHeard {
+                        number -= 1
+                    } else {
+                        number += 1
+                    }
+                }) {
+                    if showHeard {
+                        Image(systemName: "heart").foregroundColor(.red)
+                    } else {
+                        Image(systemName: "heart.fill").foregroundColor(.red)
+                    }
                 }
                 Text(String(number))
             }
+            Text(title).font(.largeTitle)
+            TextField("", text: $title).textFieldStyle(.roundedBorder)
+        
+            OtraVista(texto: $title)
+        }.padding(.all)
+    }
+}
 
-        }
+struct OtraVista: View {
+    
+    @Binding var texto: String
+    
+    var body: some View {
+        Text(texto).font(.title2).foregroundColor(.orange)
     }
 }
