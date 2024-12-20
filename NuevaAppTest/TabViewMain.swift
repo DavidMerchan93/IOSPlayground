@@ -16,6 +16,9 @@ struct TabViewMain: View {
             TerceraVista().tabItem {
                 Label("Tercera vista", systemImage:"plus")
             }
+            CuartaVista().tabItem {
+                Label("Combina", systemImage: "heart")
+            }
         }
     }
 }

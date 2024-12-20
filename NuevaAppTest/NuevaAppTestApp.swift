@@ -11,10 +11,11 @@ import SwiftUI
 struct NuevaAppTestApp: App {
     
     @Environment(\.scenePhase) var scenePhase: ScenePhase
+    var counter = CountObserver()
     
     var body: some Scene {
         WindowGroup {
-            TabViewMain()
+            TabViewMain().environmentObject(counter)
         }.onChange(of: scenePhase) { old, new in
             switch new {
             case .active:

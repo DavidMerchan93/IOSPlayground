@@ -52,8 +52,16 @@ struct TerceraVista: View {
 struct OtraVista: View {
     
     @Binding var texto: String
+    @ObservedObject var myCount = CountObserver()
     
     var body: some View {
-        Text(texto).font(.title2).foregroundColor(.orange)
+        VStack {
+            Text(texto).font(.title2).foregroundColor(.orange)
+            
+            Button("Sumar contador") {
+                myCount.count += 1
+            }
+            Text("Contador: \(myCount.count)")
+        }
     }
 }
