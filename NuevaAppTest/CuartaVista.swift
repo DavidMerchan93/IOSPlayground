@@ -23,6 +23,10 @@ struct CuartaVista: View {
             Text("Vista 1 Counter: \(counter.count)")
             Button("Incrementar") {
                 counter.count += 1
+                
+                UserDefaults.standard.set(counter, forKey: "contador")
+                let count = UserDefaults.standard.object(forKey: "contador") as? Int
+                UserDefaults.standard.removeObject(forKey: "contador")
             }
             Spacer()
             Vista2()
@@ -33,6 +37,7 @@ struct CuartaVista: View {
             Spacer()
             Vista5()
             Spacer()
+            
         }
     }
 }

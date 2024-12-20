@@ -9,4 +9,9 @@ import Combine
 
 class CountObserver: ObservableObject {
     @Published var count: Int = 0
+    
+    init() {
+        self.count = count
+    }
+    
 }
